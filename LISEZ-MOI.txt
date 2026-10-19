@@ -1,0 +1,24 @@
+MONCONGÉLO — VERSION DE DÉPART
+
+Contenu
+- index.html : inventaire personnel (fiches, photos, recherche, modification, duplication, suppression, scan QR, sauvegarde/restauration)
+- qr-generator.html : générateur indépendant de QR, corrigé pour générer 30 codes par planche A4
+- manifest.json, sw.js, icônes : installation sur l’écran d’accueil
+
+IMPORTANT — À LIRE AVANT DE COMMENCER
+1. Cette version est une application web installable (PWA), pas une application native publiée dans l’App Store.
+2. Pour l’installation sur iPhone et l’accès caméra, les fichiers doivent être hébergés en HTTPS. GitHub Pages peut convenir gratuitement.
+3. Les fiches et photos sont stockées localement dans le navigateur de l’iPhone (IndexedDB). Elles ne sont pas synchronisées vers un autre téléphone.
+4. Exportez régulièrement une sauvegarde JSON depuis le bouton « Sauvegarder mes données ». Une désinstallation, un effacement des données du navigateur ou une panne peut faire perdre les données locales.
+5. Le générateur QR utilise une bibliothèque chargée depuis un CDN et requiert une connexion Internet pour la génération. Le scan utilise également une bibliothèque distante. L’inventaire déjà chargé peut s’ouvrir en partie hors ligne, mais le scan et le générateur peuvent nécessiter Internet.
+6. Le QR doit être scanné depuis le bouton « Scanner une étiquette » dans MonCongélo. Les QR générés contiennent un identifiant texte, pas un lien internet.
+7. L’historique du générateur est conservé dans le stockage local du navigateur et séparément des fiches de l’inventaire. Ne videz pas les données du site si vous souhaitez conserver cet historique.
+
+MISE EN LIGNE GRATUITE (aperçu)
+- Déposez les fichiers du dossier dans un dépôt GitHub.
+- Activez GitHub Pages pour publier le dossier à la racine de la branche choisie.
+- Ouvrez l’adresse HTTPS obtenue dans Safari sur l’iPhone.
+- Touchez Partager, puis « Sur l’écran d’accueil ».
+- Avant de saisir des données importantes, testez ajout, modification, photo, scan QR, export et restauration.
+
+Cette version est un prototype de départ : testez-la avec quelques fiches avant d’y confier tout votre inventaire.
