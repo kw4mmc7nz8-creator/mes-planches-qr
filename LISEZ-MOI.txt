@@ -1,0 +1,21 @@
+MonCongélo — Version 2
+
+CONTENU
+- index.html : application
+- qr-generator.html : générateur de planches QR (30 codes par feuille A4)
+- icon-192.png, icon-180.png, icon-512.png : icônes sans texte, dessin agrandi
+- manifest.json : configuration de l’application web installable
+- sw.js : cache hors ligne de base
+
+MISE À JOUR SUR GITHUB PAGES
+1. Faites une copie de sécurité de votre dépôt actuel.
+2. Décompressez cette archive.
+3. Envoyez le contenu du dossier MonCongelo à la racine du dépôt GitHub, en remplaçant les fichiers de même nom.
+4. Vérifiez que index.html se trouve à la racine publiée, avec qr-generator.html, manifest.json, sw.js et les trois icônes.
+5. Attendez le déploiement GitHub Pages, puis rechargez le site sur l’iPhone. Si l’ancienne version reste affichée, fermez complètement Safari, rouvrez le site et actualisez.
+
+DONNÉES
+La version 2 conserve le nom de la base IndexedDB utilisée par la version précédente afin de retrouver les fiches locales existantes. Par précaution, exportez une sauvegarde depuis l’ancienne version avant la mise à jour. Les données locales d’un site peuvent être distinctes si l’adresse du site ou le navigateur change.
+
+CAMÉRA
+Le scan nécessite une adresse HTTPS, Safari et l’autorisation d’accès à la caméra. Le navigateur peut demander l’autorisation lors du premier scan.
