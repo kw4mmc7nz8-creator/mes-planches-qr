@@ -1,0 +1,16 @@
+MonCongélo V12 — Inventaire du congélateur
+
+MISE À JOUR
+1. Effectuez d’abord une sauvegarde depuis la V11 ter.
+2. Décompressez le ZIP.
+3. Copiez le contenu du dossier MonCongelo à la racine de votre dépôt GitHub Pages, en remplaçant les fichiers existants.
+4. Attendez le déploiement, puis actualisez la page Safari / relancez l’application installée.
+
+DONNÉES
+La base IndexedDB MonCongeloDB reste identique à celle de la V11 ter : les fiches et les QR existants sont conservés sur le même navigateur et le même domaine. Les indicateurs d’inventaire sont temporaires et ne sont pas enregistrés dans la base.
+
+INVENTAIRE
+Sélectionnez les tiroirs (aucun coché au départ), puis OK. SCAN active la caméra intégrée ; PAUSE l’arrête et montre la liste entière. Pastille rouge = à contrôler, pastille verte = contrôlé. Scan reconnu : BIP, flash vert 0,25 s et lecture vocale. Code inconnu : flash rouge et création proposée. Aliment hors tiroirs choisis : flash orange et ouverture de la modification. Retour avant achèvement : confirmation. Une fois toutes les pastilles vertes, caméra arrêtée et « Inventaire terminé ! ».
+
+REMARQUES
+La caméra nécessite HTTPS et l’autorisation Safari. La lecture QR utilise la bibliothèque jsQR chargée par Internet comme dans la V11 ter. La synthèse vocale dépend des voix disponibles sur l’iPhone. Les sons peuvent être limités par les réglages iOS. Les scans répétés d’une même étiquette restent possibles ; un délai bref de 2,3 secondes évite la répétition continue tant que le QR est maintenu devant la caméra.
