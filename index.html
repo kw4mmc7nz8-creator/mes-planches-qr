@@ -128,8 +128,54 @@ function auditOpenSelection(){auditActive=false;auditComplete=false;auditSelecti
 function auditUpdateSelection(){const boxes=[...$('auditDrawers').querySelectorAll('input')];$('auditAll').checked=boxes.every(b=>b.checked);$('auditConfirm').disabled=!boxes.some(b=>b.checked)}
 $('auditAll').onchange=()=>{const v=$('auditAll').checked;$('auditDrawers').querySelectorAll('input').forEach(b=>b.checked=v);auditUpdateSelection()};$('auditCancel').onclick=()=>show('home');$('auditConfirm').onclick=async()=>{auditSelection=new Set([...$('auditDrawers').querySelectorAll('input')].filter(b=>b.checked).map(b=>Number(b.value)));if(!auditSelection.size)return;auditActive=true;auditComplete=false;auditChecked.clear();auditLast=null;auditMode='list';show('audit');await auditRefresh()};
 function auditStopCamera(){auditSession++;if(auditLoop){cancelAnimationFrame(auditLoop);auditLoop=null}if(auditStream){auditStream.getTracks().forEach(t=>t.stop());auditStream=null}$('auditVideo').srcObject=null;$('auditCameraEmpty').classList.remove('hidden');auditBusy=false}
-function auditSpeak(x){const parts=[x.name];if(x.quantity)parts.push(x.quantity+' portion'+(Number(x.quantity)>1?'s':''));if(x.weight)parts.push(x.weight+' grammes');if(x.drawer)parts.push('tiroir '+x.drawer);if('speechSynthesis'in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(parts.join(', '));u.lang='fr-FR';u.rate=1.35;speechSynthesis.speak(u)}}
-function auditSay(text){if('speechSynthesis'in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='fr-FR';u.rate=1.2;speechSynthesis.speak(u)}}
+// iOS Safari: amorcer la synthèse lors du geste utilisateur SCAN et conserver
+// une référence aux utterances (WebKit peut sinon interrompre la lecture).
+let auditVoiceReady=false,auditVoiceCurrent=null,auditVoiceTimer=null;
+function auditFrenchVoice(){
+  if(!('speechSynthesis' in window))return null;
+  const voices=window.speechSynthesis.getVoices();
+  return voices.find(v=>v.lang.toLowerCase()==='fr-fr'&&v.localService)
+    ||voices.find(v=>v.lang.toLowerCase().startsWith('fr'))||null;
+}
+function auditPrepareVoice(){
+  if(!('speechSynthesis' in window)||!window.SpeechSynthesisUtterance)return;
+  const synth=window.speechSynthesis;
+  // Exécuté directement dans le gestionnaire du clic SCAN, avant tout await.
+  if(!auditVoiceReady){
+    auditVoiceReady=true;
+    const warmup=new SpeechSynthesisUtterance(' ');
+    warmup.lang='fr-FR';warmup.volume=0;warmup.rate=1;
+    const voice=auditFrenchVoice();if(voice)warmup.voice=voice;
+    auditVoiceCurrent=warmup;
+    synth.speak(warmup);
+  }
+  if(synth.paused)synth.resume();
+}
+function auditSay(text,rate=1.2){
+  if(!('speechSynthesis' in window)||!window.SpeechSynthesisUtterance)return;
+  const synth=window.speechSynthesis;
+  if(auditVoiceTimer)clearTimeout(auditVoiceTimer);
+  // Safari iOS peut rester muet lorsque cancel() et speak() sont consécutifs.
+  synth.cancel();
+  auditVoiceTimer=setTimeout(()=>{
+    auditVoiceTimer=null;
+    const u=new SpeechSynthesisUtterance(String(text));
+    u.lang='fr-FR';u.rate=rate;u.volume=1;
+    const voice=auditFrenchVoice();if(voice)u.voice=voice;
+    auditVoiceCurrent=u;
+    u.onend=()=>{if(auditVoiceCurrent===u)auditVoiceCurrent=null};
+    u.onerror=()=>{if(auditVoiceCurrent===u)auditVoiceCurrent=null};
+    synth.speak(u);
+    if(synth.paused)synth.resume();
+  },100);
+}
+function auditSpeak(x){
+  const parts=[x.name];
+  if(x.quantity)parts.push(x.quantity+' portion'+(Number(x.quantity)>1?'s':''));
+  if(x.weight)parts.push(x.weight+' grammes');
+  if(x.drawer)parts.push('tiroir '+x.drawer);
+  auditSay(parts.join(', '),1.3);
+}
 function auditFlash(color){const el=$('auditCameraFrame');el.classList.remove('flash-green','flash-red','flash-orange');void el.offsetWidth;el.classList.add('flash-'+color);setTimeout(()=>el.classList.remove('flash-'+color),250)}
 function auditAsk(message,buttons){return new Promise(resolve=>{auditDialogResolve=resolve;$('auditDialogText').textContent=message;const root=$('auditDialogActions');root.innerHTML='';buttons.forEach(({text,value})=>{const b=document.createElement('button');b.textContent=text;if(value===false)b.className='secondary';b.onclick=()=>{$('auditDialog').classList.add('hidden');auditDialogResolve=null;resolve(value)};root.append(b)});$('auditDialog').classList.remove('hidden')})}
 async function auditRefresh(){if(!auditActive)return;const all=(await allItems()).filter(auditIncludes).sort((a,b)=>(a.name||'').localeCompare(b.name||'','fr',{sensitivity:'base'}));const valid=new Set(all.map(x=>x.id));for(const id of auditChecked)if(!valid.has(id))auditChecked.delete(id);if(auditLast&&!valid.has(auditLast))auditLast=null;const list=auditMode==='scan'&&auditLast?all.filter(x=>x.id===auditLast):all;const root=$('auditItems');root.innerHTML='';for(const x of list){const row=document.createElement('article');row.className='audit-item';row.tabIndex=0;row.setAttribute('role','button');const photo=x.photo?'<img src="'+x.photo+'" alt="">':'<div class="placeholder">❄</div>';row.innerHTML=photo+'<div><div class="item-name">'+escapeHtml(x.name)+'</div><p>Portions : '+escapeHtml(qtyLabel(x))+'</p><p>Poids : '+escapeHtml(weightLabel(x))+'</p><p>Tiroir : '+escapeHtml(drawerLabel(x))+'</p></div><span class="audit-led '+(auditChecked.has(x.id)?'checked':'')+'" aria-label="'+(auditChecked.has(x.id)?'Contrôlé':'Non contrôlé')+'"></span>';row.onclick=()=>{auditStopCamera();openDetail(x.id)};row.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();row.click()}};root.append(row)}$('auditCount').textContent=auditChecked.size+' / '+all.length+' articles contrôlés';if(!all.length)$('auditItems').innerHTML='<p class="muted">Aucun aliment dans la sélection.</p>';if(!auditComplete&&all.length>0&&all.every(x=>auditChecked.has(x.id))){auditComplete=true;auditStopCamera();auditMode='list';await auditRefresh();await auditAsk('Inventaire terminé !',[{text:'OK',value:true}])}}
@@ -137,7 +183,7 @@ async function auditStartCamera(){if(!auditActive||auditComplete||auditStream)re
 async function auditProcess(code){beepAndVibrate();const found=(await allItems()).find(x=>x.qr===code);if(!found){auditFlash('red');auditSay('Article inconnu');auditStopCamera();const yes=await auditAsk('Voulez-vous créer une nouvelle fiche aliment ?',[{text:'ANNULER',value:false},{text:'OK',value:true}]);if(yes){auditEditReason='unknown';newItem(code)}else{show('audit');auditStartCamera()}return}if(!auditIncludes(found)){auditFlash('orange');auditSay('Attention, article mal rangé');auditStopCamera();auditEditReason='misplaced';await editItem(found.id);return}auditFlash('green');auditChecked.add(found.id);auditLast=found.id;auditMode='scan';auditSpeak(found);await auditRefresh()}
 async function auditAfterSave(rec){const reason=auditEditReason;auditEditReason='';if((reason==='unknown'||reason==='misplaced')&&auditIncludes(rec)){auditChecked.add(rec.id);auditLast=rec.id}if(!auditIncludes(rec))auditChecked.delete(rec.id);auditMode='list';show('audit');await auditRefresh()}
 function auditCancelEdit(){auditEditReason='';show('audit');auditMode='list';auditRefresh()}
-$('auditScan').onclick=()=>auditStartCamera();$('auditPause').onclick=()=>{auditStopCamera();auditMode='list';$('auditStatus').textContent='Inventaire en pause.';auditRefresh()};$('auditBack').onclick=async()=>{auditStopCamera();if(!auditComplete){const yes=await auditAsk('Etes-vous certain de vouloir quitter l’inventaire ? La totalité du travail sera perdue',[{text:'NON',value:false},{text:'OUI',value:true}]);if(!yes)return}auditActive=false;auditComplete=false;auditSelection.clear();auditChecked.clear();auditLast=null;show('home')};
+$('auditScan').onclick=()=>{auditPrepareVoice();auditStartCamera()};$('auditPause').onclick=()=>{auditStopCamera();auditMode='list';$('auditStatus').textContent='Inventaire en pause.';auditRefresh()};$('auditBack').onclick=async()=>{auditStopCamera();if(!auditComplete){const yes=await auditAsk('Etes-vous certain de vouloir quitter l’inventaire ? La totalité du travail sera perdue',[{text:'NON',value:false},{text:'OUI',value:true}]);if(!yes)return}auditActive=false;auditComplete=false;auditSelection.clear();auditChecked.clear();auditLast=null;show('home')};
 
 const oldShow=show;
 openDB().then(()=>{if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});}).catch(()=>alert('Le stockage local ne peut pas être ouvert dans ce navigateur.'));document.body.classList.add('on-home');window.addEventListener('pagehide',stopCamera);

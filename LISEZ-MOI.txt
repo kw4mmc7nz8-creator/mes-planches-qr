@@ -14,3 +14,7 @@ Sélectionnez les tiroirs (aucun coché au départ), puis OK. SCAN active la cam
 
 REMARQUES
 La caméra nécessite HTTPS et l’autorisation Safari. La lecture QR utilise la bibliothèque jsQR chargée par Internet comme dans la V11 ter. La synthèse vocale dépend des voix disponibles sur l’iPhone. Les sons peuvent être limités par les réglages iOS. Les scans répétés d’une même étiquette restent possibles ; un délai bref de 2,3 secondes évite la répétition continue tant que le QR est maintenu devant la caméra.
+
+V12 bis : correction ciblée de la synthèse vocale Safari iPhone.
+L'appui sur SCAN amorce la synthèse, la voix française est sélectionnée si disponible, et un délai évite le conflit entre cancel et speak.
+Aucune donnée ni logique d'inventaire modifiée.
