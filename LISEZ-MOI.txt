@@ -18,3 +18,8 @@ La caméra nécessite HTTPS et l’autorisation Safari. La lecture QR utilise la
 V12 bis : correction ciblée de la synthèse vocale Safari iPhone.
 L'appui sur SCAN amorce la synthèse, la voix française est sélectionnée si disponible, et un délai évite le conflit entre cancel et speak.
 Aucune donnée ni logique d'inventaire modifiée.
+
+
+VERSION 13 — 30 octobre 2026
+Étiquettes de tiroirs : 1 à 12, nom facultatif, QR codes de tiroir distincts des QR aliments, PDF A4 6 bandeaux par page. Scan tiroir : filtre de contenu et ajout successif d’aliments. Flash vert/rouge 0,25 s sur les scans QR habituels.
+Les données alimentaires existantes restent dans IndexedDB. Conservez une sauvegarde avant toute mise à jour.
