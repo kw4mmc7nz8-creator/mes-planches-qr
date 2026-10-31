@@ -23,3 +23,7 @@ Aucune donnée ni logique d'inventaire modifiée.
 VERSION 13 — 30 octobre 2026
 Étiquettes de tiroirs : 1 à 12, nom facultatif, QR codes de tiroir distincts des QR aliments, PDF A4 6 bandeaux par page. Scan tiroir : filtre de contenu et ajout successif d’aliments. Flash vert/rouge 0,25 s sur les scans QR habituels.
 Les données alimentaires existantes restent dans IndexedDB. Conservez une sauvegarde avant toute mise à jour.
+
+
+V15 (31 octobre 2026) : 30/40 QR codes, étiquettes ajustées, réglages de son et vitesse, retour contextuel des paramètres, sauvegarde harmonisée, scanner et pause agrandis.
+ATTENTION : conservez une sauvegarde JSON avant mise à jour. Le navigateur iOS décide des voix installées et peut ne pas exposer une voix féminine identifiable. L’historique QR est local au navigateur ; une suppression des données Safari peut supprimer la réserve anti-doublons.
