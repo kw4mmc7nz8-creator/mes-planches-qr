@@ -30,3 +30,6 @@ ATTENTION : conservez une sauvegarde JSON avant mise à jour. Le navigateur iOS 
 
 
 V16 : QR tiroirs indépendants du nom, guide illustré accessible dans Paramètres, réglage vitesse recalibré, filtre tiroir retiré, harmonisation des boutons.
+
+
+V16 BIS (novembre 2026) : chargement des icônes allégé et rangement par double scan tiroir puis aliment. Le QR tiroir doit être MC-TIROIR:<numéro>. Les fiches existantes sont conservées.
