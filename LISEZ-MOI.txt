@@ -33,3 +33,5 @@ V16 : QR tiroirs indépendants du nom, guide illustré accessible dans Paramètr
 
 
 V16 BIS (novembre 2026) : chargement des icônes allégé et rangement par double scan tiroir puis aliment. Le QR tiroir doit être MC-TIROIR:<numéro>. Les fiches existantes sont conservées.
+
+V18 : nouvelle référence vocale, échelle affinée, message tiroir, guide illustré, planches 40, confirmation rangement, délai de 1,5 s entre scans.
