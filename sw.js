@@ -1,4 +1,4 @@
-const CACHE='moncongelo-v16bis';
+const CACHE='moncongelo-v17';
 const FILES=['./','./index.html','./manifest.json','./icon-180.png','./icon-192.png','./icon-512.png','./qr-generator.html','./icon-printer.png','./icon-inventory.png','./icon-backup.png','./icon-raw.png','./icon-cooked.png','./icon-settings.png','./icon-barcode-scan.png','./icon-qr-scan.png','./icon-freezer-label.png','./drawer-labels.html','./screen-home.jpg','./screen-generator.jpg','./screen-detail.jpg','./screen-content.jpg','./screen-inventory.jpg','./screen-backup.jpg'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES))));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))));
