@@ -27,3 +27,6 @@ Les données alimentaires existantes restent dans IndexedDB. Conservez une sauve
 
 V15 (31 octobre 2026) : 30/40 QR codes, étiquettes ajustées, réglages de son et vitesse, retour contextuel des paramètres, sauvegarde harmonisée, scanner et pause agrandis.
 ATTENTION : conservez une sauvegarde JSON avant mise à jour. Le navigateur iOS décide des voix installées et peut ne pas exposer une voix féminine identifiable. L’historique QR est local au navigateur ; une suppression des données Safari peut supprimer la réserve anti-doublons.
+
+
+V16 : QR tiroirs indépendants du nom, guide illustré accessible dans Paramètres, réglage vitesse recalibré, filtre tiroir retiré, harmonisation des boutons.
