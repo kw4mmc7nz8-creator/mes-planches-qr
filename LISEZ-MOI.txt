@@ -37,3 +37,5 @@ V16 BIS (novembre 2026) : chargement des icônes allégé et rangement par doubl
 V18 : nouvelle référence vocale, échelle affinée, message tiroir, guide illustré, planches 40, confirmation rangement, délai de 1,5 s entre scans.
 
 V19 : délai 2 secondes pour scans QR, titre du bouton d'impression, navigation didacticiel et captures corrigées.
+
+V20 : évite les annonces vocales répétées du même tiroir pendant le double scan ; curseur SON rond ; flèches rouges sur les 7 étapes du mode d’emploi ; nouvelle capture étape 5.
