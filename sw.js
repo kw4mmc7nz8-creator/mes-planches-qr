@@ -1,4 +1,4 @@
-const CACHE='moncongelo-v21-optimisee-1';
+const CACHE='moncongelo-v22-1';
 const FILES=['./', './index.html', './manifest.json', './icon-192.png', './qr-generator.html', './icon-printer.png', './icon-inventory.png', './icon-backup.png', './icon-raw.png', './icon-cooked.png', './icon-settings.png', './icon-barcode-scan.png', './icon-qr-scan.png', './icon-freezer-label.png', './drawer-labels.html', './screen-v21-label.jpg', './screen-v21-generator.jpg', './screen-v21-scan.jpg', './screen-v21-barcode.jpg', './screen-v21-content.jpg', './screen-v21-inventory.jpg', './screen-v21-backup.jpg', './screen-generator-v21.jpg', './screen-barcode-v20.jpg', './screen-content-v20.jpg', './screen-backup.jpg', './screen-home.jpg', './icon-180.png', './icon-512.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('moncongelo-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
