@@ -137,7 +137,7 @@ input.ios-switch:checked::before{transform:translateX(24px)!important}
 <section class="hidden" id="detail"><div class="detail-topline"><button class="secondary" id="detailBack">‹ Retour</button><h2>Fiche aliment</h2><button class="secondary scan-action" id="detailScan"><img alt="" aria-hidden="true" class="scan-icon-small" src="icon-qr-scan.png"/>SCAN</button></div><div class="panel"><div class="detail-actions"><button id="editDetail"><span aria-hidden="true" class="edit-pencil">✎</span><span class="edit-label">Modifier</span></button><button id="duplicateDetail">Dupliquer</button><button class="danger" id="deleteDetail"><svg aria-hidden="true" class="trash-symbol" fill="none" height="20" stroke="#df2535" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="20"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"></path></svg> Supprimer</button></div><img alt="Photo de l’aliment" class="detail-photo hidden" id="detailPhoto" style="margin-top:14px"/><div class="detail-line"><span class="symbol detail-snowflake">❄</span><p><strong id="detailName"></strong></p></div><div class="detail-line"><span class="symbol" id="detailCategorySymbol">🐟</span><p><span class="detail-category" id="detailCategory"></span></p></div><div class="detail-line"><span class="symbol">♙</span><p id="detailQty"></p></div><div class="detail-line"><span class="symbol">⚖</span><p id="detailWeight"></p></div><div class="detail-line"><span class="symbol">▤</span><p id="detailDrawer"></p></div><div class="detail-line"><span class="symbol">▦</span><p id="detailDate"></p></div><div class="detail-line" id="detailCommentLine"><span class="symbol">☷</span><p id="detailComment"></p></div></div></section>
 <section class="hidden" id="scanner"><div class="topline"><button class="secondary" id="closeScanner">‹ Retour</button><h2 id="scannerHeading">Scanner un QR code</h2><span style="width:55px"></span></div><div class="panel"><p id="drawerScanInstruction" class="drawer-scan-instruction hidden" role="status"></p><div id="normalCameraFrame" style="position:relative"><video class="scan-video" id="video" muted="" playsinline=""></video><div id="normalFlash" style="position:absolute;inset:0;pointer-events:none;border-radius:12px;opacity:0"></div></div><canvas class="hidden" id="canvas"></canvas><p class="scan-message" id="scanStatus" role="status">Démarrage de la caméra…</p></div></section>
 <section class="hidden" id="barcodeScanner"><div class="topline"><button class="secondary" id="closeBarcodeScanner">‹ Retour</button><h2>Scanner un code-barres</h2><span style="width:55px"></span></div><div class="panel"><div id="barcodeReader"></div><p class="scan-message" id="barcodeStatus" role="status">Démarrage de la caméra…</p></div></section>
-<section class="hidden" id="parameters"><div class="topline"><button class="secondary" id="backParameters">‹ Retour</button><h2>Paramètres</h2><span style="width:55px"></span></div><div class="panel"><div class="sound-setting"><label for="soundEnabled">Son (bips et annonces vocales)</label><input aria-label="Activer ou couper le son" checked="" class="ios-switch" id="soundEnabled" role="switch" type="checkbox"/></div><div class="field"><label for="voiceGender">Voix de lecture</label><select id="voiceGender"><option value="female">Voix féminine</option><option value="male">Voix masculine</option></select></div><div class="field"><label for="voiceSpeed">Vitesse de lecture : <span id="voiceSpeedValue">1.00×</span></label><input id="voiceSpeed" max="1.15" min="0.85" step="0.01" type="range" value="1"/><div class="speed-labels"><span>Lente</span><span>Normale</span><span>Rapide</span></div></div><div class="guide-demo-setting"><label for="guideDemoEnabled">Démonstrations audiovisuelles</label><input type="checkbox" class="ios-switch" id="guideDemoEnabled" checked role="switch" aria-label="Afficher les démonstrations audiovisuelles"></div><div class="guide-demo-setting"><label for="guideDemoEnabled">Démonstrations audiovisuelles</label><input type="checkbox" class="ios-switch" id="guideDemoEnabled" checked role="switch" aria-label="Afficher les démonstrations audiovisuelles"></div><button class="secondary settings-wide" id="openGuide" type="button">📖 Mode d’emploi</button><button class="secondary settings-wide" id="aboutApp" type="button">À propos</button></div></section><section class="hidden" id="guide"><div class="topline guide-topline"><button class="secondary" id="guideBack">‹ Retour</button><h2>Mode d’emploi</h2><span></span></div><div class="panel"><p class="muted">Découvrez MonCongélo pas à pas. Touchez « Explication détaillée » pour en savoir plus.</p><div id="guideSteps"></div><div class="guide-nav"><button class="secondary" id="guidePrev">‹ Précédent</button><span id="guideProgress"></span><button id="guideNext">Suivant ›</button></div></div></section><section class="hidden" id="settings"><div class="topline"><button class="secondary" id="backHome2">‹ Retour</button><h2>Sauvegarde</h2><span style="width:55px"></span></div><div class="panel"><h3>Sauvegarder mes données</h3><p class="muted">Pour sauvegarder les données de l’applications (fiches et photos), cliquer sur le bouton « Sauvegarder mes données » puis à la page suivante sur « Plus … » puis à la page suivante sur « Enregistrer dans Fichiers »</p><button class="backup-action" id="exportBackup">Sauvegarder mes données</button><hr style="border:0;border-top:1px solid var(--line);margin:18px 0"/><h3>Restaurer mes données</h3><p class="muted">La restauration remplace l’inventaire actuel de cet iPhone.</p><label class="choose-backup" for="importFile">Choisir une sauvegarde</label><input accept="application/json,.json" id="importFile" type="file"/><div aria-live="polite" class="selected-backup-name" id="selectedBackupName"></div><button class="backup-action" id="importBackup">Restaurer mes données</button></div></section>
+<section class="hidden" id="parameters"><div class="topline"><button class="secondary" id="backParameters">‹ Retour</button><h2>Paramètres</h2><span style="width:55px"></span></div><div class="panel"><div class="sound-setting"><label for="soundEnabled">Son (bips et annonces vocales)</label><input aria-label="Activer ou couper le son" checked="" class="ios-switch" id="soundEnabled" role="switch" type="checkbox"/></div><div class="field"><label for="voiceGender">Voix de lecture</label><select id="voiceGender"><option value="female">Voix féminine</option><option value="male">Voix masculine</option></select></div><div class="field"><label for="voiceSpeed">Vitesse de lecture : <span id="voiceSpeedValue">1.00×</span></label><input id="voiceSpeed" max="1.15" min="0.85" step="0.01" type="range" value="1"/><div class="speed-labels"><span>Lente</span><span>Normale</span><span>Rapide</span></div></div><div class="guide-demo-setting"><label for="guideDemoEnabled">Démonstrations audiovisuelles</label><input type="checkbox" class="ios-switch" id="guideDemoEnabled" checked role="switch" aria-label="Afficher les démonstrations audiovisuelles"></div><button class="secondary settings-wide" id="openGuide" type="button">📖 Mode d’emploi</button><button class="secondary settings-wide" id="aboutApp" type="button">À propos</button></div></section><section class="hidden" id="guide"><div class="topline guide-topline"><button class="secondary" id="guideBack">‹ Retour</button><h2>Mode d’emploi</h2><span></span></div><div class="panel"><p class="muted">Découvrez MonCongélo pas à pas. Touchez « Explication détaillée » pour en savoir plus.</p><div id="guideSteps"></div><div class="guide-nav"><button class="secondary" id="guidePrev">‹ Précédent</button><span id="guideProgress"></span><button id="guideNext">Suivant ›</button></div></div></section><section class="hidden" id="settings"><div class="topline"><button class="secondary" id="backHome2">‹ Retour</button><h2>Sauvegarde</h2><span style="width:55px"></span></div><div class="panel"><h3>Sauvegarder mes données</h3><p class="muted">Pour sauvegarder les données de l’applications (fiches et photos), cliquer sur le bouton « Sauvegarder mes données » puis à la page suivante sur « Plus … » puis à la page suivante sur « Enregistrer dans Fichiers »</p><button class="backup-action" id="exportBackup">Sauvegarder mes données</button><hr style="border:0;border-top:1px solid var(--line);margin:18px 0"/><h3>Restaurer mes données</h3><p class="muted">La restauration remplace l’inventaire actuel de cet iPhone.</p><label class="choose-backup" for="importFile">Choisir une sauvegarde</label><input accept="application/json,.json" id="importFile" type="file"/><div aria-live="polite" class="selected-backup-name" id="selectedBackupName"></div><button class="backup-action" id="importBackup">Restaurer mes données</button></div></section>
 <div class="foot">MonCongélo · Données conservées localement sur cet appareil</div></main>
 <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
 <script>
@@ -257,11 +257,8 @@ let storedPrefs={};try{storedPrefs=JSON.parse(localStorage.getItem('moncongelo-p
 const appPrefs=Object.assign({sound:true,gender:'female'},storedPrefs);if(appPrefs.rateScale!==18){appPrefs.rate=1;appPrefs.rateScale=18}else appPrefs.rate=Number.isFinite(Number(appPrefs.rate))?Math.max(.85,Math.min(1.15,Number(appPrefs.rate))):1;
 if(typeof appPrefs.guideDemos!=='boolean')appPrefs.guideDemos=true;
 $('guideDemoEnabled').checked=appPrefs.guideDemos;
-if(typeof appPrefs.guideDemos!=='boolean')appPrefs.guideDemos=true;
-$('guideDemoEnabled').checked=appPrefs.guideDemos;
 $('soundEnabled').checked=appPrefs.sound;$('voiceGender').value=appPrefs.gender;$('voiceSpeed').value=String(appPrefs.rate);$('voiceSpeedValue').textContent=appPrefs.rate.toFixed(2)+'×';
 function savePrefs(){appPrefs.sound=$('soundEnabled').checked;appPrefs.gender=$('voiceGender').value;appPrefs.rate=Number($('voiceSpeed').value);$('voiceSpeedValue').textContent=appPrefs.rate.toFixed(2)+'×';try{localStorage.setItem('moncongelo-prefs',JSON.stringify(appPrefs))}catch(e){console.warn('Préférences non sauvegardées',e)}}
-$('guideDemoEnabled').onchange=()=>{appPrefs.guideDemos=$('guideDemoEnabled').checked;try{localStorage.setItem('moncongelo-prefs',JSON.stringify(appPrefs))}catch(e){};guideStopDemo();if(!$('guide').classList.contains('hidden'))renderGuide()};
 $('guideDemoEnabled').onchange=()=>{appPrefs.guideDemos=$('guideDemoEnabled').checked;try{localStorage.setItem('moncongelo-prefs',JSON.stringify(appPrefs))}catch(e){};guideStopDemo();if(!$('guide').classList.contains('hidden'))renderGuide()};
 $('soundEnabled').onchange=()=>{savePrefs();if(appPrefs.sound){auditVoiceReady=false;auditPrepareVoice()}};$('voiceGender').onchange=savePrefs;$('voiceSpeed').oninput=savePrefs;
 
@@ -329,94 +326,11 @@ function guideStartDemo(){
  const scenes=guideScenes[guideStep];let current=0;
  function next(){
   if(token!==guideDemoToken)return;
-  if(current>=scenes.length){counter.textContent='Démonstration terminée';caption.textContent='Vous pouvez relancer la démonstration ou poursuivre le mode d’emploi.';return}
+  if(current>=scenes.length){guideDemoUtterance=null;counter.textContent='Démonstration terminée';caption.textContent='Vous pouvez relancer la démonstration ou poursuivre le mode d’emploi.';return}
   const [src,words]=scenes[current];image.src=src;caption.textContent=words;counter.textContent='Séquence '+(current+1)+' / '+scenes.length;current++;
   const fallback=Math.max(3500,Math.min(8500,words.length*70));
   let advanced=false;
-  const advance=()=>{if(advanced||token!==guideDemoToken)return;advanced=true;if(guideDemoTimer!==null){clearTimeout(guideDemoTimer);guideDemoTimer=null}guideDemoTimer=setTimeout(next,350)};
-  if(appPrefs.sound&&'speechSynthesis' in window&&window.SpeechSynthesisUtterance){
-   try{
-    const u=new SpeechSynthesisUtterance(words);u.lang='fr-FR';u.rate=Math.max(.5,Math.min(2,appPrefs.rate*1.15*.94));
-    if(typeof auditFrenchVoice==='function'){const v=auditFrenchVoice();if(v)u.voice=v}
-    guideDemoUtterance=u;u.onend=advance;u.onerror=advance;
-    window.speechSynthesis.speak(u);if(window.speechSynthesis.paused)window.speechSynthesis.resume();
-    guideDemoTimer=setTimeout(advance,fallback+2500);
-   }catch(e){guideDemoTimer=setTimeout(advance,fallback)}
-  }else{guideDemoTimer=setTimeout(advance,fallback)}
- }
- next();
-}
-
-
-// V21 — séquences d'images et synthèse vocale locale ; aucune vidéo externe.
-const guideScenes=[
- [
-  ['screen-v21-label.jpg','Depuis l’accueil, choisissez Étiqueter le congélateur.'],
-  ['screen-v21-label.jpg','Indiquez le nombre de tiroirs, entre un et douze.'],
-  ['screen-v21-label.jpg','Générez les étiquettes, imprimez-les et collez-les sur les tiroirs.']
- ],
- [
-  ['screen-v21-generator.jpg','Ouvrez Imprimer des planches de QR codes.'],
-  ['screen-v21-generator.jpg','Appuyez sur Nouvelle planche, quarante codes.'],
-  ['screen-v21-generator.jpg','Choisissez Générer PDF, puis imprimez la planche.'],
-  ['screen-v21-generator.jpg','Chaque étiquette doit servir à un seul aliment.']
- ],
- [
-  ['screen-v21-scan.jpg','Depuis l’accueil, appuyez sur Scanner un QR code.'],
-  ['screen-v21-scan.jpg','Présentez l’étiquette QR code collée sur votre aliment.'],
-  ['screen-v21-barcode.jpg','Une nouvelle fiche s’ouvre automatiquement.'],
-  ['screen-v21-barcode.jpg','Renseignez le nom, les quantités et le tiroir de rangement.'],
-  ['screen-v21-barcode.jpg','Enfin, enregistrez votre fiche.']
- ],
- [
-  ['screen-v21-barcode.jpg','Dans la fiche, touchez Scanner le code barre du produit.'],
-  ['screen-v21-barcode.jpg','Présentez le code barres commercial de l’emballage.'],
-  ['screen-v21-barcode.jpg','Vérifiez les informations proposées avant d’enregistrer.']
- ],
- [
-  ['screen-v21-content.jpg','Depuis l’accueil, ouvrez Contenu du congélateur.'],
-  ['screen-v21-content.jpg','Utilisez la recherche pour retrouver votre aliment.'],
-  ['screen-v21-content.jpg','Touchez une fiche pour la consulter, puis choisissez Modifier si nécessaire.']
- ],
- [
-  ['screen-v21-inventory.jpg','Depuis l’accueil, choisissez Inventaire du congélateur.'],
-  ['screen-v21-inventory.jpg','Sélectionnez un inventaire complet ou celui d’un tiroir.'],
-  ['screen-v21-inventory.jpg','Scannez chaque aliment une fois pour vérifier sa présence.'],
-  ['screen-v21-inventory.jpg','Utilisez Pause et Scan pour interrompre ou reprendre la lecture.']
- ],
- [
-  ['screen-v21-backup.jpg','Depuis l’accueil, choisissez Sauvegarder ou Restaurer.'],
-  ['screen-backup.jpg','Touchez Sauvegarder mes données pour exporter vos fiches et photos.'],
-  ['screen-backup.jpg','Enregistrez le fichier dans l’application Fichiers de l’iPhone.'],
-  ['screen-backup.jpg','Attention : restaurer une sauvegarde remplace les fiches actuelles.']
- ]
-];
-let guideDemoToken=0,guideDemoTimer=null,guideDemoUtterance=null;
-function guideStopDemo(){
- guideDemoToken++;
- if(guideDemoTimer!==null){clearTimeout(guideDemoTimer);guideDemoTimer=null}
- if(guideDemoUtterance&&'speechSynthesis' in window){try{window.speechSynthesis.cancel()}catch(e){}}
- guideDemoUtterance=null;
- const p=document.getElementById('guideDemoPlayer');if(p){p.hidden=true;p.replaceChildren()}
-}
-function guideStartDemo(){
- guideStopDemo();
- const player=document.getElementById('guideDemoPlayer');if(!player)return;
- const token=guideDemoToken;player.hidden=false;
- const title=document.createElement('strong');title.textContent='Démonstration : '+guideData[guideStep].title;
- const image=document.createElement('img');image.alt='Image de la démonstration';
- const counter=document.createElement('div');counter.className='guide-demo-count';
- const caption=document.createElement('p');caption.className='guide-demo-caption';caption.setAttribute('aria-live','polite');
- const stop=document.createElement('button');stop.className='guide-demo-stop';stop.type='button';stop.textContent='■ Arrêter la démonstration';stop.onclick=guideStopDemo;
- player.append(title,image,counter,caption,stop);
- const scenes=guideScenes[guideStep];let current=0;
- function next(){
-  if(token!==guideDemoToken)return;
-  if(current>=scenes.length){counter.textContent='Démonstration terminée';caption.textContent='Vous pouvez relancer la démonstration ou poursuivre le mode d’emploi.';return}
-  const [src,words]=scenes[current];image.src=src;caption.textContent=words;counter.textContent='Séquence '+(current+1)+' / '+scenes.length;current++;
-  const fallback=Math.max(3500,Math.min(8500,words.length*70));
-  let advanced=false;
-  const advance=()=>{if(advanced||token!==guideDemoToken)return;advanced=true;if(guideDemoTimer!==null){clearTimeout(guideDemoTimer);guideDemoTimer=null}guideDemoTimer=setTimeout(next,350)};
+  const advance=()=>{if(advanced||token!==guideDemoToken)return;advanced=true;guideDemoUtterance=null;if('speechSynthesis' in window){try{window.speechSynthesis.cancel()}catch(e){}}if(guideDemoTimer!==null){clearTimeout(guideDemoTimer);guideDemoTimer=null}guideDemoTimer=setTimeout(next,350)};
   if(appPrefs.sound&&'speechSynthesis' in window&&window.SpeechSynthesisUtterance){
    try{
     const u=new SpeechSynthesisUtterance(words);u.lang='fr-FR';u.rate=Math.max(.5,Math.min(2,appPrefs.rate*1.15*.94));
