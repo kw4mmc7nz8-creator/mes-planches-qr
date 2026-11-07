@@ -55,3 +55,5 @@ V21 — Nouveautés
 - Démonstrations audiovisuelles sur les 7 étapes : images successives + synthèse vocale française locale.
 - Bouton Arrêter et option dans Paramètres pour masquer les démonstrations.
 - Aucune donnée alimentaire modifiée par ces démonstrations.
+
+V23 bis : compression locale des photos (600 px, JPEG 75 %), migration progressive des anciennes photos, bouton audio bleu nuit, flèches du didacticiel repositionnées, annonces vocales complètes, Retour pour le choix d’inventaire et centrage de la vitesse normale.
