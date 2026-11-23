@@ -1,4 +1,4 @@
-const CACHE='moncongelo-v23bis-1';
+const CACHE='moncongelo-v24-1';
 const FILES=['./', './index.html', './manifest.json', './drawer-labels.html', './icon-180.png', './icon-192.png', './icon-512.png', './icon-backup.png', './icon-barcode-scan.png', './icon-cooked.png', './icon-freezer-label.png', './icon-inventory.png', './icon-printer.png', './icon-qr-scan.png', './icon-raw.png', './icon-settings.png', './qr-generator.html', './screen-backup.jpg', './screen-barcode-v20.jpg', './screen-content-v20.jpg', './screen-generator-v21.jpg', './screen-home.jpg', './screen-v21-backup.jpg', './screen-v21-barcode.jpg', './screen-v21-content.jpg', './screen-v21-generator.jpg', './screen-v21-inventory.jpg', './screen-v21-label.jpg', './screen-v21-scan.jpg'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('moncongelo-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()))});

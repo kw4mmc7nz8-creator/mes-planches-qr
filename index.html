@@ -117,6 +117,9 @@ input.ios-switch:checked::before{transform:translateX(24px)!important}
 #guide .guide-topline button{justify-self:start}
 #guide .guide-screen{height:auto;max-width:100%;object-fit:contain}
 #soundEnabled{box-sizing:border-box!important}
+/* V24 : zone blanche entre la barre d'état iOS et le bandeau bleu. */
+html{background:#fff}
+body::before{content:"";display:block;height:32px;background:#fff}
 </style></head><body>
 <header><button aria-label="Paramètres" id="homeSettings" title="Paramètres" type="button"><img alt="Paramètres" src="icon-settings.png"/></button><img alt="Logo MonCongélo" src="icon-192.png"/><h1>MonCongélo</h1></header>
 <input aria-hidden="true" id="iosHapticSwitch" style="position:fixed;opacity:0;pointer-events:none;width:1px;height:1px" switch="" tabindex="-1" type="checkbox"/><main class="wrap">

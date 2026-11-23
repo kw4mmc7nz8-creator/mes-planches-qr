@@ -57,3 +57,6 @@ V21 — Nouveautés
 - Aucune donnée alimentaire modifiée par ces démonstrations.
 
 V23 bis : compression locale des photos (600 px, JPEG 75 %), migration progressive des anciennes photos, bouton audio bleu nuit, flèches du didacticiel repositionnées, annonces vocales complètes, Retour pour le choix d’inventaire et centrage de la vitesse normale.
+
+V24 — correction esthétique de la jonction supérieure (novembre 2026).
+Un espace blanc de 32 px éloigne le bandeau bleu de l'effet de fondu de la barre d'état iOS. Aucun changement fonctionnel ni de stockage. Cache hors ligne actualisé. Le résultat reste à vérifier sur iPhone. Effectuez une sauvegarde avant déploiement.
